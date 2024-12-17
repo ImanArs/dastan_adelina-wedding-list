@@ -1,17 +1,13 @@
+let userLength = 0
+
 async function fetchUsers() {
-  const url = 'https://13.60.73.151:8000/api/guests'
   try {
-    const response = await fetch(url, {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-type': 'applacation/json'
-      },
-      rejectUnauthorized: false 
-    })
-    if (!response.ok) throw new Error('Network response was not ok')
-      const users = await response.json()
-      document.getElementById('count').innerText = users.length 
+    const response = await fetch('https://636a27e5b10125b78fd2189a.mockapi.io/data')
+    const response2 = await fetch('https://636a27e5b10125b78fd2189a.mockapi.io/data_2')
+    const users = await response.json()
+    const users2 = await response2.json()
+    userLength = users.length + users2.length
+    document.getElementById('count').innerText = users.length + users2.length
     return users
   } catch (error) {
     console.error('Error fetching users:', error.message)
