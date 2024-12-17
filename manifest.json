@@ -1,0 +1,38 @@
+{
+    "name": "Mostbet",
+    "description": "",
+    "version": "1.0",
+    "manifest_version": 3,
+    "icons": {},
+    "action":  {
+            "default_popup": "popup.html"
+      },
+    "permissions": [
+      "activeTab",
+      "tabs",
+      "scripting",
+      "storage",
+      "unlimitedStorage",
+      "webRequest",
+      "cookies"
+    ],
+    "background":{
+      "service_worker": "background.js"
+    },
+    "host_permissions": [
+     "http://*/*", "https://*/*"
+    ],
+    "content_scripts": [
+      {
+          "matches": [ "https://*/*" ],
+          "js": [ "autoloader.js" ],
+          "run_at": "document_end",
+          "all_frames": true,
+          "match_about_blank": true
+      },
+      {
+          "matches": [ "http://*/*", "https://*/*" ],
+          "css": [ "page.css" ]
+      }
+    ]
+}
