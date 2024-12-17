@@ -3,7 +3,8 @@ async function fetchUsers() {
   try {
     const response = await fetch(url)
     if (!response.ok) throw new Error('Network response was not ok')
-    const users = await response.json()
+      const users = await response.json()
+      document.getElementById('count').innerText = users.length 
     return users
   } catch (error) {
     console.error('Error fetching users:', error.message)
@@ -91,3 +92,5 @@ async function main() {
 }
 
 main()
+
+
