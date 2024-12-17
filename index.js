@@ -1,7 +1,14 @@
 async function fetchUsers() {
   const url = 'https://13.60.73.151:8000/api/guests'
   try {
-    const response = await fetch(url)
+    const response = await fetch(url, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-type': 'applacation/json'
+      },
+      rejectUnauthorized: false 
+    })
     if (!response.ok) throw new Error('Network response was not ok')
       const users = await response.json()
       document.getElementById('count').innerText = users.length 
